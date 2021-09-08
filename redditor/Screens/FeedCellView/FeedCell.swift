@@ -13,11 +13,10 @@ class FeedCell: UITableViewCell{
     private let states = ["default", "nsfw", "self", "image"]
     private let padding: CGFloat = 10
     
-    
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .left
-        label.numberOfLines = 4
+        label.numberOfLines = 2
         label.lineBreakMode = .byTruncatingTail
         label.baselineAdjustment = .none
         label.font = .systemFont(ofSize: 18, weight: .bold)
@@ -78,34 +77,34 @@ class FeedCell: UITableViewCell{
     }
 //MARK:- UI Configuration Methods
     
-
-    private func configureThumbnail(){
-        thumbnailView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            thumbnailView.trailingAnchor.constraint(equalTo: contentView.centerXAnchor),
-            thumbnailView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: padding),
-            thumbnailView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: padding),
-            thumbnailView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -padding)
-        ])
-    }
     
     private func configureTitle(){
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: padding),
-            titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            titleLabel.leadingAnchor.constraint(equalTo: contentView.centerXAnchor, constant: padding),
+            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20),
+            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: padding),
             titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -padding),
         ])
     }
     
+
+    private func configureThumbnail(){
+        thumbnailView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            thumbnailView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor,constant: 20),
+            thumbnailView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            thumbnailView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            thumbnailView.heightAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.75)
+        ])
+    }
     
+
     private func configureScore(){
         scoreLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            scoreLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: -25),
-            scoreLabel.leadingAnchor.constraint(equalTo: contentView.centerXAnchor, constant: padding),
-            scoreLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            scoreLabel.topAnchor.constraint(equalTo: thumbnailView.bottomAnchor, constant: 20),
+            scoreLabel.trailingAnchor.constraint(equalTo: contentView.centerXAnchor, constant: -50),
+            scoreLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -padding),
         ])
     }
     
@@ -113,9 +112,10 @@ class FeedCell: UITableViewCell{
     private func configureComment(){
         commentLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            commentLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: -25),
-            commentLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
-            commentLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            commentLabel.topAnchor.constraint(equalTo: thumbnailView.bottomAnchor, constant: 20),
+            commentLabel.leadingAnchor.constraint(equalTo: contentView.centerXAnchor, constant: 50),
+            commentLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -padding),
         ])
     }
 }
+

@@ -14,7 +14,7 @@ enum ItemType {
 class DataLabel: UIView {
 
     private let symbolImageView = UIImageView()
-    private let titleLabel = TitleLabel(textAlignment: .left, fontSize: 14)
+    private let titleLabel = TitleLabel(textAlignment: .left, fontSize: 16)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
